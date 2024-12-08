@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1>Add Student</h1>
+
+<form th:action="@{/academy/student/add-student}" method="post" class="mt-4">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter student name" required>
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" id="age" name="age" class="form-control" placeholder="Enter student age" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Enter student email" required>
+    </div>
+    <div class="mb-3">
+        <label for="education" class="form-label">Education</label>
+        <input type="text" id="education" name="education" class="form-control" placeholder="Enter student education" required>
+    </div>
+    <div class="mb-3">
+        <label for="activity" class="form-label">Activity</label>
+        <input type="text" id="activity" name="activity" class="form-control" placeholder="Enter student activity" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+</body>
+</html>

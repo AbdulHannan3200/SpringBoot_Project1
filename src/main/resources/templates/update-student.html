@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1>Update Student</h1>
+
+<form th:action="@{/academy/student/update-student/{id}(id=${student.id})}" method="post" class="mt-4">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" th:value="${student.name}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" id="age" name="age" th:value="${student.age}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" th:value="${student.email}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="education" class="form-label">Education</label>
+        <input type="text" id="education" name="education" th:value="${student.education}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="activity" class="form-label">Activity</label>
+        <input type="text" id="activity" name="activity" th:value="${student.activity}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+</body>
+</html>
