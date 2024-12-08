@@ -1,7 +1,7 @@
 package com.example.to_do.controller;
 
 import com.example.to_do.entity.Student;
-import com.example.to_do.service.StudentService;
+import com.example.to_do.service.StudentServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("academy/student")
 public class StudentController {
-    private final StudentService studentService;
+    private final StudentServiceImpl studentServiceImpl;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+    public StudentController(StudentServiceImpl studentServiceImpl) {
+        this.studentServiceImpl = studentServiceImpl;
     }
 
     @GetMapping("/info")
     public String index(Model model) {
-        model.addAttribute("students", studentService.findAll(null));
+        model.addAttribute("students", studentServiceImpl.findAll(null));
         return "index";
     }
 
@@ -29,25 +29,25 @@ public class StudentController {
 
     @PostMapping("/add-student")
     public String addStudent(@ModelAttribute("student") Student student) {
-        studentService.saveInfo(student);
+        studentServiceImpl.saveInfo(student);
         return "redirect:/";
     }
 
     @GetMapping("/update-student/{id}")
     public String showUpdateForm(@PathVariable long id, Model model) {
-        model.addAttribute("student", studentService.findById(id));
+        model.addAttribute("student", studentServiceImpl.findById(id));
         return "update-student";
     }
 
     @PostMapping("/update-student/{id}")
     public String updateStudent(@PathVariable long id, @ModelAttribute("student") Student updatedStudent) {
-        studentService.updateInfo(id, updatedStudent);
+        studentServiceImpl.updateInfo(id, updatedStudent);
         return "redirect:/";
     }
 
     @GetMapping("/delete-student/{id}")
     public String deleteStudent(@PathVariable long id) {
-        studentService.deleteById(id);
+        studentServiceImpl.deleteById(id);
         return "redirect:/";
     }
 }
